@@ -3,13 +3,13 @@
 
 static int __init helloworld_init(void)
 {
-	printk("Hello World Enter!\n");
+	printk(KERN_INFO "Hello World Enter!\n");
 	return 0;
 }
 
 static void __exit helloworld_exit(void)
 {
-	printk("Hello World Exit!\n");
+	printk(KERN_INFO "Hello World Exit!\n");
 }
 
 module_init(helloworld_init);
