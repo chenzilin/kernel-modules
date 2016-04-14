@@ -1,0 +1,11 @@
+menu "My Device Drivers"
+
+config MYDRIVERS
+	bool "mydrivers examples"
+
+if MYDRIVERS
+config MYDRIVERS_HELLO_WORLD
+	tristate "hello world"
+endif
+
+endmenu
