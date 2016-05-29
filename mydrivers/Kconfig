@@ -4,8 +4,11 @@ config MYDRIVERS
 	bool "mydrivers examples"
 
 if MYDRIVERS
-config MYDRIVERS_HELLO_WORLD
+config MYDRIVERS_HELLOWORLD
 	tristate "hello world"
+
+config MYDRIVERS_GLOBALMEM
+	tristate "globalmem"
 endif
 
 endmenu
