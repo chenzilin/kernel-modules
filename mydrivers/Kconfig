@@ -17,6 +17,11 @@ config MYDRIVERS_PROCFS_TEST
 	help
 	  a simple module procfs test example
 
+config MYDRIVERS_TIMER_TEST
+	tristate "timer test"
+	help
+	  a simple timer test module example
+
 config MYDRIVERS_GLOBALMEM
 	tristate "globalmem"
 	help
