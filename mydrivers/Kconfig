@@ -7,8 +7,20 @@ if MYDRIVERS
 config MYDRIVERS_HELLOWORLD
 	tristate "hello world"
 
+config MYDRIVERS_MODULE_PARAM
+	tristate "moduleparam"
+	help
+	  a simple module param example
+
 config MYDRIVERS_GLOBALMEM
 	tristate "globalmem"
+	help
+	  a simple char device driver
+
+config MYDRIVERS_VMEMDISK
+	tristate "vmem_disk"
+	help
+	  a simple block device driver
 endif
 
 endmenu
