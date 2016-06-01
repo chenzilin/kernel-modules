@@ -12,6 +12,11 @@ config MYDRIVERS_MODULE_PARAM
 	help
 	  a simple module param example
 
+config MYDRIVERS_PROCFS_TEST
+	tristate "procfs test"
+	help
+	  a simple module procfs test example
+
 config MYDRIVERS_GLOBALMEM
 	tristate "globalmem"
 	help
