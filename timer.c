@@ -1,29 +1,22 @@
 #include <linux/kernel.h>
-#include <linux/init.h>
 #include <linux/module.h>
 #include <linux/timer.h>
-#include <linux/sched.h>
 
 struct timer_list mytimer;
 
-static void timer_do_things(unsigned long data)
+static void timer_timeout_handler(struct timer_list *timer)
 {
-	printk(KERN_INFO "timer: Running a timer function @ %lu\n", jiffies);
+	printk(KERN_ERR "timer: Running a timer function @ %lu\n", jiffies);
 
-	/* Renew timer */
-	mytimer.expires = jiffies + (HZ * 5);
-	add_timer(&mytimer);
+	mod_timer(timer, jiffies + 10*HZ);
 }
 
 static int __init timer_init(void)
 {
-	printk(KERN_INFO "timer: %s\n", __FUNCTION__);
-	init_timer(&mytimer);
+	printk(KERN_ERR "timer: %s\n", __FUNCTION__);
 
-	mytimer.data = 0;
-	mytimer.function = timer_do_things;
-	mytimer.expires = jiffies + (HZ * 5);
-
+	timer_setup(&mytimer, timer_timeout_handler, 0);
+	mytimer.expires = jiffies + 10*HZ;	// timeout after 10s
 	add_timer(&mytimer);
 
 	return 0;

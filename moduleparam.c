@@ -8,14 +8,14 @@ module_param(name, charp, S_IRUGO);
 
 static int __init moduleparam_init(void)
 {
-	printk(KERN_INFO "My age is %d\n", age);
-	printk(KERN_INFO "My name is %s\n", name);
+	printk(KERN_ERR "My age is %d\n", age);
+	printk(KERN_ERR "My name is %s\n", name);
 	return 0;
 }
 
 static void __exit moduleparam_exit(void)
 {
-	printk(KERN_INFO "Module Exit!\n");
+	printk(KERN_ERR "Module Exit!\n");
 }
 
 module_init(moduleparam_init);

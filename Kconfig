@@ -7,20 +7,25 @@ if MYDRIVERS
 config MYDRIVERS_HELLOWORLD
 	tristate "hello world"
 
-config MYDRIVERS_MODULE_PARAM
+config MYDRIVERS_MODULEPARAM
 	tristate "moduleparam"
 	help
 	  a simple module param example
 
-config MYDRIVERS_PROCFS_TEST
-	tristate "procfs test"
+config MYDRIVERS_CHARDEV
+	tristate "chardev"
 	help
-	  a simple module procfs test example
+	  a simple chardev example
 
-config MYDRIVERS_TIMER_TEST
-	tristate "timer test"
+config MYDRIVERS_PROCFS
+	tristate "procfs"
 	help
-	  a simple timer test module example
+	  a simple module procfs example
+
+config MYDRIVERS_TIMER
+	tristate "timer"
+	help
+	  a simple timer module example
 
 config MYDRIVERS_GLOBALMEM
 	tristate "globalmem"

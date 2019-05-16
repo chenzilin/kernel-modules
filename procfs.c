@@ -1,7 +1,7 @@
+#include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/proc_fs.h>
-#include <asm/uaccess.h>
-
+#include <linux/uaccess.h>
 
 #define LEN_MSG 160
 #define NAME_NODE "procfstest"
@@ -19,7 +19,7 @@ static ssize_t procfstest_read(struct file *file, char *buf, size_t count, loff_
 	char *buf_msg = get_rw_buf();
 	int res;
 
-	pr_info("read: %d bytes (ppos=%lld)", count, *ppos);
+	pr_info("read: %zu bytes (ppos=%lld)", count, *ppos);
 	if(*ppos >= strlen(buf_msg)) {
 		*ppos = 0;
 		pr_info("EOF");
@@ -29,7 +29,7 @@ static ssize_t procfstest_read(struct file *file, char *buf, size_t count, loff_
 		count = strlen(buf_msg) - *ppos;
 	res = copy_to_user((void*)buf, buf_msg + *ppos, count);
 	*ppos += count;
-	pr_info("return %d bytes", count);
+	pr_info("return %zu bytes", count);
 	return count;
 }
 
@@ -37,7 +37,7 @@ static ssize_t procfstest_write(struct file *file, const char *buf, size_t count
 {
 	char *buf_msg = get_rw_buf();
 	int res, len = count < LEN_MSG ? count : LEN_MSG;
-	pr_info("write: %d bytes\n", (int)count);
+	pr_info("write: %zu bytes\n", count);
 	res = copy_from_user(buf_msg, (void*)buf, len);
 	buf_msg[len] = '\0';
 	pr_info("put %d bytes\n", len);
@@ -75,4 +75,4 @@ module_exit(procfstest_exit);
 MODULE_VERSION("1.0");
 MODULE_AUTHOR("ZiLin Chen");
 MODULE_LICENSE("Dual BSD/GPL");
-MODULE_DESCRIPTION("A Simple Module Param Module");
+MODULE_DESCRIPTION("A Simple ProcFs Test Module");

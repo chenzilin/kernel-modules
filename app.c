@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -9,7 +10,7 @@ int main()
     int ret;
     char buf[20];
 
-    if((fd = open("/dev/test", O_RDWR)) < 0) {
+    if((fd = open("/dev/simple_cdev", O_RDWR)) < 0) {
         perror("open");
         return -1;
     }

@@ -1,12 +1,12 @@
-	My Own Kernel Drivers Study
+	My Own Kernel Modules Study, Based on linux 4.15
 
 	Usage:
-		1. Copy mydrivers folder to your kernel source  drivers/
+		1. Copy kernel-modules folder to your kernel source  drivers/
 		2. add configs to top-level Kcongfig and Makefile
 		3. make menuconfig
 
 	Example:
-
+```
 diff --git a/drivers/Kconfig b/drivers/Kconfig
 index ab6de06..234809a 100644
 --- a/drivers/Kconfig
@@ -14,7 +14,7 @@ index ab6de06..234809a 100644
 @@ -1,5 +1,7 @@
  menu "Device Drivers"
 
-+source "drivers/mydrivers/Kconfig"
++source "drivers/kernel-modules/Kconfig"
 
  source "drivers/base/Kconfig"
 
@@ -28,7 +28,8 @@ index 8ca9a48..35298dc 100644
  # Rewritten to use lists instead of if-statements.
  #
 
-+obj-y  += mydrivers/
++obj-y  += kernel-modules/
 
  obj-y                          += irqchip/
  obj-y                          += bus/
+```
